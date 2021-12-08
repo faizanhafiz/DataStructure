@@ -1,0 +1,30 @@
+
+public class Solution {  
+    
+    public static void reverse(int arr[], int start ,int end)
+    {
+        while(start<=end)
+        {
+            int tmp=arr[start];
+            arr[start]=arr[end];
+            arr[end]=tmp;
+            start++;
+            end--;
+        
+        }
+        
+        
+    }
+
+    public static void rotate(int[] arr, int d) {
+    	//Your code goes here
+        int size=arr.length;
+        if(arr.length!=0){
+        int rotation = d%arr.length;
+        reverse(arr,0,size-1);
+        reverse(arr,0, size-rotation-1);
+        reverse(arr,size-rotation,size-1);
+        }
+    }
+
+}
