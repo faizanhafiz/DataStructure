@@ -1,0 +1,89 @@
+/*
+
+    Following is the Node class already written for the Linked List
+
+    class LinkedListNode<T> {
+        T data;
+        LinkedListNode<T> next;
+    
+        public LinkedListNode(T data) {
+            this.data = data;
+        }
+    }
+
+*/
+
+public class Solution {
+    public static LinkedListNode<Integer> th=null,tt=null,ph=null,pt=null;
+    public static void addFirst(LinkedListNode<Integer> node)
+    {
+        if(node==null) return;
+        if(th==null)
+        {
+            th=node;
+            tt=node;
+        }else
+        {
+            node.next=th;
+            th=node;
+        }
+        
+        
+    }
+
+	public static LinkedListNode<Integer> kReverse(LinkedListNode<Integer> head, int k) {
+		//Your code goes here
+        
+        if(head==null  || head.next==null||k<=1)return head;
+       // LinkedListNode<Integer> th =null ,tt=null,ph=null,pt=null;
+        
+        LinkedListNode<Integer> curr = head;
+        
+        while(curr!=null)
+        {
+            // LinkedListNode<Integer> forw =curr.next; 
+           // curr.next=null;
+            int count =1;
+            while(count<=k && curr!=null)
+            {  
+                LinkedListNode<Integer> forw =curr.next;
+                curr.next=null;
+//                 if(th==null)
+//                 {
+//                     th=curr;
+//                     tt=curr;
+//                 }else
+//                 {
+//                     curr.next=th;
+//                     th=curr;
+                    
+//                 }
+                 
+                addFirst(curr);
+                count++;
+                curr=forw;
+            }
+            
+            
+            if(ph==null)
+            {
+                ph=th;
+                pt=tt;
+            }else
+            {
+                pt.next=th;
+                pt=tt;
+            }
+            
+            th=null;
+            tt=null;
+            
+            
+        }
+        
+        
+       return ph; 
+        
+	}
+
+}
